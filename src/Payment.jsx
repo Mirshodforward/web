@@ -7,6 +7,11 @@ export default function Payment() {
   const navigate = useNavigate();
   const location = useLocation();
 
+  // Agar Payment sahifasiga state-siz kelingan bo‘lsa, foydalanuvchini Homega qaytaring
+  useEffect(() => {
+    if (!location.state) navigate("/", { replace: true });
+  }, [location.state, navigate]);
+
   const {
     username = "demo_user",
     quantity = 1,
@@ -161,7 +166,7 @@ export default function Payment() {
       return (
         <>
           <div className="star-anim error">&#10060;</div>
-          <div className="modal-text">Xatolik: Stars yuborilmadi.<br/> Qayta urinib ko'ring.</div>
+          <div className="modal-text">Xatolik: Stars yuborilmadi.<br />Qayta urinib ko'ring.</div>
           <button
             className="main-btn"
             onClick={() => {
@@ -182,52 +187,26 @@ export default function Payment() {
     paid
       ? "pay-btn paid"
       : payError
-      ? "pay-btn error"
-      : checking
-      ? "pay-btn checking"
-      : "pay-btn";
+        ? "pay-btn error"
+        : checking
+          ? "pay-btn checking"
+          : "pay-btn";
   const btnText = paid
     ? "Status: Paid"
     : checking
-    ? "Checking..."
-    : "Status: Unpaid";
+      ? "Checking..."
+      : "Status: Unpaid";
 
   return (
     <div className="page-container">
       <header>
         <div className="brand-logo">Stars Paymee</div>
-        
-<button onClick={() => navigate("/")}
-  className="bg-white text-center w-48 rounded-2xl h-14 relative text-black text-xl font-semibold group"
-  type="button"
->
-  <div
-    className="bg-green-400 rounded-xl h-12 w-1/4 flex items-center justify-center absolute left-1 top-[4px] group-hover:w-[184px] z-10 duration-500"
-  >
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 1024 1024"
-      height="25px"
-      width="25px"
-    >
-      <path
-        d="M224 480h640a32 32 0 1 1 0 64H224a32 32 0 0 1 0-64z"
-        fill="#000000"
-      ></path>
-      <path
-        d="m237.248 512 265.408 265.344a32 32 0 0 1-45.312 45.312l-288-288a32 32 0 0 1 0-45.312l288-288a32 32 0 1 1 45.312 45.312L237.248 512z"
-        fill="#000000"
-      ></path>
-    </svg>
-  </div>
-  <p className="translate-x-2">Go Back</p>
-</button>
-
+        <button onClick={() => navigate("/")} className="go-back-btn" type="button">
+          <span>&larr; Go Back</span>
+        </button>
       </header>
 
       <main className="content-area">
-       
-
         <div className="profile-preview">
           {imageUrl ? (
             <img src={imageUrl} alt="Profil rasmi" className="profile-img" />
@@ -241,15 +220,15 @@ export default function Payment() {
         <div className="details">
           <p>@{username} ga {quantity}⭐ Stars olinmoqda!</p>
           <p>💎 Ton to'lovi: {tonAmount.toFixed(2)} </p>
-          <hr/>
-          <p>Qr code ustiga bosing Yoki tonkeeper orqali scanerlang!</p>
+          <hr />
+          <p>QR code ustiga bosing yoki tonkeeper orqali scanerlang!</p>
         </div>
-        
+
         <div className="qr-block">
           {!qrReady ? (
             <div className="qr-loader">QR code yuklanmoqda...</div>
           ) : (
-            <a href={tonLink} target="_blank" rel="noopener noreferrer" style={{display: "inline-block"}}>
+            <a href={tonLink} target="_blank" rel="noopener noreferrer" style={{ display: "inline-block" }}>
               <QRCode value={tonLink} size={220} />
             </a>
           )}
@@ -261,16 +240,17 @@ export default function Payment() {
         <button
           className={btnClass}
           onClick={paid ? undefined : checkPayment}
-          disabled={checking}
+          disabled={checking || paid}
         >
           {btnText}
         </button>
-        <footer>
-          <p>
-            &copy; 2025 <b>StarsPaymee</b> All rights reserved
-          </p>
-        </footer>
       </div>
+
+      <footer>
+        <p>
+          &copy; 2025 <b>StarsPaymee</b> All rights reserved
+        </p>
+      </footer>
 
       {/* Modal (stars yuborilmoqda, muvaffaqiyatli, yoki xatolik) */}
       {showModal && (

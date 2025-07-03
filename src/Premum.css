@@ -1,0 +1,162 @@
+.premum-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(120deg, #f0f0f7 0%, #e6f7ff 100%);
+}
+
+.premum-header {
+  padding: 32px 0 16px 0;
+  text-align: center;
+  background: #fff;
+  border-bottom: 1px solid #e3e3e3;
+}
+.brand-logo {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #0060ff;
+  margin-bottom: 8px;
+}
+.premum-title {
+  font-size: 1.25rem;
+  color: #333;
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+}
+
+.premum-content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.premum-card {
+  background: #fff;
+  border-radius: 22px;
+  box-shadow: 0 8px 32px rgba(0,96,255,0.08);
+  padding: 36px 24px;
+  width: 100%;
+  max-width: 370px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.premum-label {
+  font-size: 1rem;
+  margin-bottom: 6px;
+  color: #333;
+}
+
+.premum-input {
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid #c3d9ff;
+  font-size: 1rem;
+  margin-bottom: 22px;
+  outline: none;
+  transition: border 0.2s;
+}
+.premum-input:focus {
+  border-color: #0060ff;
+}
+
+.premum-subtitle {
+  font-size: 1rem;
+  margin-bottom: 7px;
+  color: #444;
+}
+.premum-options {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+.premum-opt-btn {
+  background: #e6f7ff;
+  border: 1.5px solid #b2d8ff;
+  border-radius: 8px;
+  padding: 8px 15px;
+  font-size: 0.98rem;
+  color: #0060ff;
+  cursor: pointer;
+  transition: background 0.18s, border 0.18s;
+}
+.premum-opt-btn.selected,
+.premum-opt-btn:active {
+  background: #0060ff;
+  color: #fff;
+  border-color: #0060ff;
+}
+.premum-opt-btn:disabled {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.premum-buy-btn {
+  margin-top: 8px;
+  background: #00ad54;
+  color: #fff;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 0;
+  cursor: pointer;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 14px #00ad541a;
+  transition: background 0.2s;
+}
+.premum-buy-btn:active {
+  background: #007e3a;
+}
+.premum-buy-btn:disabled {
+  opacity: 0.7;
+  background: #00ad5460;
+  cursor: not-allowed;
+}
+
+.premum-error {
+  color: #d32f2f;
+  background: #fff0f0;
+  border: 1px solid #ffbdbd;
+  padding: 8px 10px;
+  border-radius: 7px;
+  margin: 12px 0 6px 0;
+  font-size: 0.98rem;
+  text-align: center;
+}
+
+.premum-success {
+  margin-top: 26px;
+  text-align: center;
+  color: #00ad54;
+  font-weight: 500;
+  font-size: 1.08rem;
+}
+.star-anim {
+  font-size: 2.7rem;
+  margin-bottom: 6px;
+  display: block;
+  animation: spinStar 1.2s linear;
+}
+@keyframes spinStar {
+  0% { transform: rotate(0deg) scale(0.7);}
+  60% { transform: rotate(180deg) scale(1.25);}
+  100% { transform: rotate(360deg) scale(1);}
+}
+
+.success-text {
+  color: #0060ff;
+  font-size: 1.08rem;
+  margin-top: 5px;
+}
+
+footer {
+  padding: 14px 0 4px 0;
+  text-align: center;
+  color: #666;
+  font-size: 1rem;
+  background: #fff;
+  border-top: 1px solid #e3e3e3;
+}
