@@ -1,19 +1,30 @@
-import { useState } from 'react'
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+
+import Home from './Home.jsx';
+import Payment from './Payment.jsx';
+import Premum from './Premum.jsx';
 
 
 
 function App() {
-
-
   return (
-    <>
-      <div>
-        <h1>nima gapp</h1>
-        <h4>Qondaye</h4>
-        <button>Bosqani</button>
-        </div>
-    </>
-  )
+    <Router>
+      <Routes>
+        <Route path="/" element={
+          <>
+            
+            <Home />
+          </>
+        } />
+        <Route path="/payment" element={<Payment />} />
+        <Route path="/premum" element={<Premum />} />
+        
+      </Routes>
+    </Router>
+  );
 }
 
-export default App
+
+export default App;
+
+

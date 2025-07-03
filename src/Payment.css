@@ -1,0 +1,545 @@
+/* Modern CSS Reset and Variables */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --background-color: #f4f7fa;
+  --primary-color: #ffffff;
+  --accent-color: #4a90e2;
+  --accent-gradient: linear-gradient(135deg, #4a90e2 0%, #0072ff 100%);
+  --success-color: #00d4aa;
+  --success-gradient: linear-gradient(135deg, #00d4aa 0%, #00b894 100%);
+  --warning-color: #fdcb6e;
+  --error-color: #e74c3c;
+  --text-primary: #333333;
+  --text-secondary: #555555;
+  --text-light: #888888;
+  --border-color: #e0e6ed;
+  --shadow-light: 0 4px 12px rgba(0, 0, 0, 0.05);
+  --shadow-medium: 0 8px 24px rgba(0, 0, 0, 0.1);
+  --border-radius: 12px;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body {
+  background-color: var(--background-color);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: var(--text-primary);
+  overflow: hidden;
+}
+
+.page-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/* Header Styles */
+header {
+  flex-shrink: 0;
+  padding: 16px 24px;
+  background-color: var(--primary-color);
+  box-shadow: var(--shadow-light);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.brand-logo {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--accent-color);
+  letter-spacing: -0.5px;
+}
+
+.back-btn {
+  background-color: var(--primary-color);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.back-btn:hover {
+  background-color: #f8f9fa;
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+  transform: translateY(-1px);
+}
+
+/* Main Content Area */
+.content-area {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Page Title */
+.page-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text-primary);
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+/* Profile Preview */
+.profile-preview {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px;
+  background-color: var(--primary-color);
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-light);
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.profile-img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--accent-color);
+  box-shadow: var(--shadow-light);
+}
+
+.img-skeleton {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.name {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.error {
+  color: var(--error-color);
+  font-size: 14px;
+  margin-top: 4px;
+}
+
+/* Payment Details */
+.details {
+  background-color: var(--primary-color);
+  border-radius: var(--border-radius);
+  padding: 20px;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-light);
+}
+
+.details p {
+  font-size: 16px;
+  color: var(--text-secondary);
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+
+.details p:last-child {
+  margin-bottom: 0;
+}
+
+.details b {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+/* QR Code Section */
+.qr-block {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 280px;
+  background-color: var(--primary-color);
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-light);
+  padding: 24px;
+  transition: var(--transition);
+}
+
+.qr-block:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-medium);
+}
+
+.qr-loader {
+  font-size: 16px;
+  color: var(--text-light);
+  font-weight: 500;
+  text-align: center;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* QR Code styling */
+.qr-block svg {
+  border-radius: 8px;
+  box-shadow: var(--shadow-light);
+  transition: var(--transition);
+}
+
+.qr-block svg:hover {
+  transform: scale(1.02);
+  box-shadow: var(--shadow-medium);
+}
+
+/* Payment Button */
+.pay-btn {
+  width: 100%;
+  padding: 16px;
+  border-radius: var(--border-radius);
+  border: none;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.pay-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.6s;
+}
+
+.pay-btn:hover::before {
+  left: 100%;
+}
+
+/* Default state */
+.pay-btn {
+  background-image: var(--accent-gradient);
+  color: white;
+  box-shadow: 0 8px 20px rgba(74, 144, 226, 0.3);
+}
+
+.pay-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(74, 144, 226, 0.4);
+}
+
+/* Checking state */
+.pay-btn.checking {
+  background: linear-gradient(135deg, var(--warning-color) 0%, #f39c12 100%);
+  color: white;
+  cursor: wait;
+  animation: checkingPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes checkingPulse {
+  0%, 100% { 
+    box-shadow: 0 8px 20px rgba(253, 203, 110, 0.3);
+    transform: translateY(0);
+  }
+  50% { 
+    box-shadow: 0 12px 28px rgba(253, 203, 110, 0.5);
+    transform: translateY(-2px);
+  }
+}
+
+/* Paid state */
+.pay-btn.paid {
+  background-image: var(--success-gradient);
+  color: white;
+  box-shadow: 0 8px 20px rgba(0, 212, 170, 0.3);
+  animation: successGlow 2s ease-in-out infinite;
+}
+
+@keyframes successGlow {
+  0%, 100% { 
+    box-shadow: 0 8px 20px rgba(0, 212, 170, 0.3);
+  }
+  50% { 
+    box-shadow: 0 12px 28px rgba(0, 212, 170, 0.5);
+  }
+}
+
+/* Error state */
+.pay-btn.error {
+  background: linear-gradient(135deg, var(--error-color) 0%, #c0392b 100%);
+  color: white;
+  animation: errorShake 0.5s ease-in-out;
+}
+
+@keyframes errorShake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+/* Fixed Footer/Button Area */
+.end-button {
+  flex-shrink: 0;
+  padding: 16px 24px;
+  background-color: var(--primary-color);
+  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.05);
+  border-top: 1px solid var(--border-color);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Modal Styles */
+.modal-blur {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(8px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.modal-content {
+  background-color: var(--primary-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-medium);
+  padding: 32px;
+  min-width: 320px;
+  text-align: center;
+  animation: modalPop 0.4s ease-out;
+  position: relative;
+  overflow: hidden;
+}
+
+@keyframes modalPop {
+  0% { 
+    transform: scale(0.8); 
+    opacity: 0; 
+  }
+  100% { 
+    transform: scale(1); 
+    opacity: 1; 
+  }
+}
+
+.star-anim {
+  font-size: 48px;
+  margin-bottom: 16px;
+  animation: starFlare 1.5s ease-in-out infinite;
+  filter: drop-shadow(0 4px 8px rgba(74, 144, 226, 0.3));
+}
+
+@keyframes starFlare {
+  0%, 100% { 
+    transform: scale(1) rotate(0deg); 
+    color: var(--accent-color);
+  }
+  50% { 
+    transform: scale(1.1) rotate(5deg); 
+    color: #0072ff;
+  }
+}
+
+.modal-text {
+  font-size: 18px;
+  color: var(--text-primary);
+  font-weight: 600;
+  margin-bottom: 20px;
+  line-height: 1.5;
+  animation: modalTextFade 0.6s ease-out;
+}
+
+@keyframes modalTextFade {
+  0% { 
+    opacity: 0; 
+    transform: translateY(10px); 
+  }
+  100% { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+.star-anim.finished {
+  color: var(--success-color);
+  filter: drop-shadow(0 4px 8px rgba(0, 212, 170, 0.3));
+  animation: successBounce 0.8s ease-out;
+}
+
+@keyframes successBounce {
+  0% { transform: scale(0.5) rotate(-180deg); }
+  50% { transform: scale(1.2) rotate(0deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+.star-anim.error {
+  color: var(--error-color);
+  font-size: 40px;
+  filter: drop-shadow(0 4px 8px rgba(231, 76, 60, 0.3));
+  animation: errorShake 0.5s ease-in-out;
+}
+
+.main-btn {
+  width: 100%;
+  padding: 16px;
+  background-image: var(--accent-gradient);
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: 0 8px 20px rgba(74, 144, 226, 0.3);
+}
+
+.main-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(74, 144, 226, 0.4);
+}
+
+/* Footer Text */
+footer {
+  text-align: center;
+  font-size: 12px;
+  color: var(--text-light);
+}
+
+footer b {
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+/* Custom Scrollbar */
+.content-area::-webkit-scrollbar {
+  width: 6px;
+}
+
+.content-area::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.content-area::-webkit-scrollbar-thumb {
+  background: #c1cde0;
+  border-radius: 3px;
+}
+
+.content-area::-webkit-scrollbar-thumb:hover {
+  background: #a8b8d0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .content-area {
+    padding: 16px;
+  }
+  
+  .page-title {
+    font-size: 24px;
+  }
+  
+  .profile-preview {
+    padding: 16px;
+  }
+  
+  .qr-block {
+    min-height: 240px;
+    padding: 20px;
+  }
+  
+  .modal-content {
+    margin: 16px;
+    padding: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  header {
+    padding: 12px 16px;
+  }
+  
+  .content-area {
+    padding: 12px;
+  }
+  
+  .profile-img,
+  .img-skeleton {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .name {
+    font-size: 16px;
+  }
+  
+  .details {
+    padding: 16px;
+  }
+  
+  .details p {
+    font-size: 14px;
+  }
+  
+  .qr-block {
+    min-height: 220px;
+    padding: 16px;
+  }
+  
+  .pay-btn {
+    font-size: 16px;
+    padding: 14px;
+  }
+  
+  .modal-content {
+    padding: 20px;
+    min-width: 280px;
+  }
+  
+  .star-anim {
+    font-size: 40px;
+  }
+  
+  .modal-text {
+    font-size: 16px;
+  }
+}
